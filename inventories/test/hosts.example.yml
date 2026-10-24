@@ -1,0 +1,10 @@
+all:
+  children:
+    mailservers:
+      hosts:
+        mail-uat:
+          ansible_host: 138.68.186.127
+          ansible_user: root
+          mail_hostname: mail-uat.kool4katz.co.uk
+          # Keep test-specific certificate paths and firewall isolation here.
+          # Do not put passwords or private keys in this file.

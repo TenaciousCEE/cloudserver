@@ -1,0 +1,14 @@
+---
+# Non-secret shared settings only. Put credentials and private key material in
+# a separate Ansible Vault file, never in ordinary YAML or Git history.
+
+mail_domains:
+  - kool4katz.co.uk
+  - lcnw.co.uk
+  - lewisconsultancy.co.uk
+
+mail_dkim_selector: mail
+
+# Deliberately explicit during migration; do not enable unattended renewal on
+# an isolated rehearsal host until its DNS and certificate strategy are clear.
+certbot_timer_enabled: false

@@ -1,0 +1,19 @@
+---
+- name: Verify mail infrastructure
+  hosts: mailservers
+  become: true
+  tasks:
+    - name: Check required services
+      ansible.builtin.service_facts:
+
+    - name: Report required service state
+      ansible.builtin.debug:
+        msg: "{{ item }}: {{ ansible_facts.services[item + '.service'].state | default('absent') }}"
+      loop:
+        - postfix
+        - dovecot
+        - opendkim
+        - spamassassin
+        - clamav-daemon
+        - fail2ban
+        - shorewall

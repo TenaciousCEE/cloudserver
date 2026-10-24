@@ -1,0 +1,15 @@
+---
+- name: Configure mail infrastructure
+  hosts: mailservers
+  become: true
+  roles:
+    # Roles will be added incrementally after the live configuration baseline
+    # has been sanitised and reviewed.
+    - postfix
+    - dovecot
+    - opendkim
+    - spamassassin
+    - clamav
+    - fail2ban
+    - shorewall
+    - certbot

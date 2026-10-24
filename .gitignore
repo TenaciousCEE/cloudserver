@@ -1,0 +1,30 @@
+# Ansible runtime and local state
+*.retry
+.ansible/
+ansible.log
+
+# Local inventories and secrets
+inventories/*/hosts.yml
+inventories/*/group_vars/*/vault*.yml
+vault-password-file
+.env
+
+# Extracted server configuration, logs and backups
+evidence/
+backups/
+*.log
+*.sql
+
+# Private key material and certificates
+*.key
+*.private
+*.secret
+*.pem
+*.p12
+*.pfx
+private/
+secrets/
+
+# Editor and OS files
+.DS_Store
+*.swp
