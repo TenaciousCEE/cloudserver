@@ -70,6 +70,23 @@ Check sizes, checksums and archive readability. Test-restore at least one
 mailbox, one database and one representative website file. A snapshot alone is
 not a sufficient mailbox backup.
 
+Snapshot retention strategy:
+
+- Label retained snapshots unmistakably, for example `KEEP-vm3-<state>-<date>`.
+- Keep a known-good snapshot during a one-to-two-week settling period after a
+  major upgrade or migration.
+- Once the system has remained stable, take and verify a fresh current-state
+  snapshot before deleting superseded checkpoints.
+- Retain one clearly labelled production recovery snapshot, while deleting
+  intermediate upgrade snapshots and retired UAT snapshots when no longer
+  useful.
+- Never delete the old snapshot set until the replacement snapshot has
+  completed successfully and its name, date and Droplet association have been
+  checked.
+- A Droplet snapshot is a rapid system rollback/rebuild option, not a
+  substitute for independent mailbox, database and website backups. A restored
+  snapshot also retains any undetected compromise in the source system.
+
 Keep the old host powered on and unchanged. Lower DNS TTLs in advance, but do
 not change MX or A records yet. If rollback is needed, restore the old DNS
 records, stop new delivery on the replacement, retain its new mail for
